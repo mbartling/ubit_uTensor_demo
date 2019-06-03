@@ -8,10 +8,10 @@ This project was built in a Docker container. Make sure you have docker installe
 
 ```
 docker pull patrickthomashansen/yotta:initial
-docker run -ti -v LOCAL_PROJECT_DIRECTORY:/home/ patrickthomashansen/yotta:initial bash
+docker run -ti -v PATH_TO_REPO:/home/ patrickthomashansen/yotta:initial bash
 cd /home
 yotta target bbc-microbit-classic-gcc
 yotta build
 ```
 
-Then copy the file `LOCAL_PROJECT_DIRECTORY/ubit_uYensor_demo/build/bbc-microbit-classic-gcc/source/ubit-utensor-demo-combined.hex` onto your microbit to run inference. If it succeeds, it will display a the predicted class on its LED display. Otherwise, the LED display will scroll with a sad face and error code.
+Then copy the file `PATH_TO_REPO/ubit_uYensor_demo/build/bbc-microbit-classic-gcc/source/ubit-utensor-demo-combined.hex` onto your microbit to run inference. If it succeeds, it will display a the predicted class on its LED display. Otherwise, the LED display will scroll with a sad face and error code.

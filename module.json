@@ -1,0 +1,11 @@
+{
+  "name": "ubit-utensor-demo",
+  "version": "0.0.0",
+  "description": "Running a NAS network on uBit using uTensor",
+  "license": "MIT",
+  "dependencies": {
+    "microbit": "lancaster-university/microbit#v2.1.1",
+    "uTensor": "patrickthomashansen/utensor-yotta"
+  },
+  "bin": "./source"
+}

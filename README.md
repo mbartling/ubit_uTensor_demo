@@ -10,8 +10,6 @@ This project was built in a Docker container. Make sure you have docker installe
 docker pull patrickthomashansen/yotta:initial
 docker run -ti -v LOCAL_PROJECT_DIRECTORY:/home/ patrickthomashansen/yotta:initial bash
 cd /home
-git exit https://github.com/patrickthomashansen/ubit_uTensor_demo.git
-cd ubit_uTensor_demo/
 yotta target bbc-microbit-classic-gcc
 yotta build
 ```

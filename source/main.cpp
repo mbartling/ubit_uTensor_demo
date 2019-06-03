@@ -18,12 +18,11 @@ int main(void) {
   Tensor* input_x = new WrappedRamTensor<float>({1, 784}, (float*) input_data);
 
   get_mnist_for_mc_ctx(ctx, input_x);  // pass the tensor to the context
-  //S_TENSOR pred_tensor = ctx.get("y_pred:0");  // getting a reference to the output tensor
-  //ctx.eval(); //trigger the inference
+  S_TENSOR pred_tensor = ctx.get("y_pred:0");  // getting a reference to the output tensor
+  ctx.eval(); //trigger the inference
 
-  //int pred_label = *(pred_tensor->read<int>(0, 0));  //getting the result back
-  //uBit.display.scroll(pred_label);
-  uBit.display.scroll("Hello");
+  int pred_label = *(pred_tensor->read<int>(0, 0));  //getting the result back
+  uBit.display.scroll(pred_label);
 
   release_fiber();
 }

@@ -25,7 +25,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new ReshapeOp(), 
              { "Placeholder:0", "mul_eightbit/Placeholder__port__0/reshape_dims:0" },
              { "mul_eightbit/Placeholder__port__0/reshape:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({1}, inline_mul_eightbit_Placeholder__port__0_reduction_dims_0), 
@@ -39,7 +39,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MinOp(), 
              { "mul_eightbit/Placeholder__port__0/reshape:0", "mul_eightbit/Placeholder__port__0/reduction_dims:0" },
              { "mul_eightbit/Placeholder__port__0/min:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     RamTensor<float>* out_tensor;
@@ -48,7 +48,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MaxOp(), 
              { "mul_eightbit/Placeholder__port__0/reshape:0", "mul_eightbit/Placeholder__port__0/reduction_dims:0" },
              { "mul_eightbit/Placeholder__port__0/max:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<uint8_t>(), "mul_eightbit/Placeholder__port__0/quantize:0", 1);
@@ -57,7 +57,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizeV2Op(),
              {  "Placeholder:0",  "mul_eightbit/Placeholder__port__0/min:0", "mul_eightbit/Placeholder__port__0/max:0" },
              {  "mul_eightbit/Placeholder__port__0/quantize:0",  "mul_eightbit/Placeholder__port__0/quantize:1", "mul_eightbit/Placeholder__port__0/quantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<float>({1}, inline_mul_y_0), 
@@ -74,7 +74,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new ReshapeOp(), 
              { "mul/y:0", "mul_eightbit/mul/y__port__0/reshape_dims:0" },
              { "mul_eightbit/mul/y__port__0/reshape:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({1}, inline_mul_eightbit_mul_y__port__0_reduction_dims_0), 
@@ -88,7 +88,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MinOp(), 
              { "mul_eightbit/mul/y__port__0/reshape:0", "mul_eightbit/mul/y__port__0/reduction_dims:0" },
              { "mul_eightbit/mul/y__port__0/min:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     RamTensor<float>* out_tensor;
@@ -97,7 +97,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MaxOp(), 
              { "mul_eightbit/mul/y__port__0/reshape:0", "mul_eightbit/mul/y__port__0/reduction_dims:0" },
              { "mul_eightbit/mul/y__port__0/max:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<uint8_t>(), "mul_eightbit/mul/y__port__0/quantize:0", 2);
@@ -106,7 +106,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizeV2Op(),
              {  "mul/y:0",  "mul_eightbit/mul/y__port__0/min:0", "mul_eightbit/mul/y__port__0/max:0" },
              {  "mul_eightbit/mul/y__port__0/quantize:0",  "mul_eightbit/mul/y__port__0/quantize:1", "mul_eightbit/mul/y__port__0/quantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<int>(), "mul/eightbit:0", 2);
@@ -115,7 +115,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizedMulOp<uint8_t, uint8_t, int>(), 
              { "mul_eightbit/Placeholder__port__0/quantize:0", "mul_eightbit/Placeholder__port__0/quantize:1", "mul_eightbit/Placeholder__port__0/quantize:2", "mul_eightbit/mul/y__port__0/quantize:0", "mul_eightbit/mul/y__port__0/quantize:1",  "mul_eightbit/mul/y__port__0/quantize:2" },
              { "mul/eightbit:0", "mul/eightbit:1",  "mul/eightbit:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<float>({1}), "mul/eightbit/requant_range:0", 1);
@@ -123,7 +123,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new Requantization_RangeOp(),
              { "mul/eightbit:0", "mul/eightbit:1", "mul/eightbit:2" },
              { "mul/eightbit/requant_range:0", "mul/eightbit/requant_range:1" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     ctx.add(new RamTensor<uint8_t>(), "mul/eightbit/requantize:0", 1);
@@ -132,7 +132,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new RequantizeOp(),
              { "mul/eightbit:0", "mul/eightbit:1", "mul/eightbit:2", "mul/eightbit/requant_range:0", "mul/eightbit/requant_range:1" },
              { "mul/eightbit/requantize:0", "mul/eightbit/requantize:1", "mul/eightbit/requantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<float>({5,5,1,9}, inline_stochastic_conv2_mu_0), 
@@ -149,7 +149,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new ReshapeOp(), 
              { "stochastic_conv2/mu:0", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reshape_dims:0" },
              { "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reshape:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({1}, inline_stochastic_conv2d__channel__pruning_Conv2D_eightbit_stochastic_conv2_mu__port__0_reduction_dims_0), 
@@ -163,7 +163,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MinOp(), 
              { "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reshape:0", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reduction_dims:0" },
              { "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/min:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     RamTensor<float>* out_tensor;
@@ -172,7 +172,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MaxOp(), 
              { "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reshape:0", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/reduction_dims:0" },
              { "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/max:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<uint8_t>(), "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:0", 1);
@@ -181,14 +181,14 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizeV2Op(),
              {  "stochastic_conv2/mu:0",  "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/min:0", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/max:0" },
              {  "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:0",  "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:1", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<uint8_t>(), "stochastic_conv2d__channel__pruning/Conv2D/eightbit_max_pooling2d/MaxPool/eightbit:0", 1);
     ctx.push(new FusedConvMaxpoolOp<uint8_t, uint8_t, uint8_t>({ 1, 1, 1, 1 }, { 1, 2, 2, 1 },VALID),
              { "mul/eightbit/requantize:0", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:0", "mul/eightbit/requantize:1", "mul/eightbit/requantize:2", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:1", "stochastic_conv2d__channel__pruning/Conv2D_eightbit/stochastic_conv2/mu__port__0/quantize:2" },
              { "stochastic_conv2d__channel__pruning/Conv2D/eightbit_max_pooling2d/MaxPool/eightbit:0"});
-    //ctx.eval();
+    ctx.eval();
 }
 
 {
@@ -198,7 +198,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizedReluOp<uint8_t, float, uint8_t>(), 
              { "stochastic_conv2d__channel__pruning/Conv2D/eightbit_max_pooling2d/MaxPool/eightbit:0", "stochastic_conv2d__channel__pruning/Conv2D/eightbit_max_pooling2d/MaxPool/eightbit:1", "stochastic_conv2d__channel__pruning/Conv2D/eightbit_max_pooling2d/MaxPool/eightbit:2" },
              { "Relu/eightbit:0", "Relu/eightbit:1", "Relu/eightbit:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({2}, inline_Reshape_1_shape_0), 
@@ -212,14 +212,14 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizedReshapeOp(),
               { "Relu/eightbit:0", "Reshape_1/shape:0", "Relu/eightbit:1", "Relu/eightbit:2" },
               { "Reshape_1/eightbit:0", "Reshape_1/eightbit:1", "Reshape_1/eightbit:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<float>(), "Reshape_1:0", 1);
     ctx.push(new DequantizeOp(), 
              { "Reshape_1/eightbit:0", "Reshape_1/eightbit:1", "Reshape_1/eightbit:2" },
              { "Reshape_1:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({119}, inline_GatherV2_indices_0), 
@@ -236,7 +236,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new GatherOp<float>(),
              { "Reshape_1:0", "GatherV2/indices:0", "GatherV2/axis:0" }, 
              { "GatherV2:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({1}, inline_stochastic_dense__channel__pruning_MatMul_eightbit_GatherV2__port__0_reshape_dims_0), 
@@ -248,7 +248,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new ReshapeOp(), 
              { "GatherV2:0", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reshape_dims:0" },
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reshape:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<int>({1}, inline_stochastic_dense__channel__pruning_MatMul_eightbit_GatherV2__port__0_reduction_dims_0), 
@@ -262,7 +262,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MinOp(), 
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reshape:0", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reduction_dims:0" },
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/min:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     RamTensor<float>* out_tensor;
@@ -271,7 +271,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new MaxOp(), 
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reshape:0", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/reduction_dims:0" },
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/max:0" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<uint8_t>(), "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:0", 1);
@@ -280,7 +280,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizeV2Op(),
              {  "GatherV2:0",  "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/min:0", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/max:0" },
              {  "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:0",  "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:1", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {    
     ctx.add(new BinaryTensor<uint8_t>({119,10}, inline_stochastic_dense_mu_quantized_const_0), 
@@ -304,7 +304,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QntMatMulOp<uint8_t, uint8_t, int>(), 
              { "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:0", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:1", "stochastic_dense__channel__pruning/MatMul_eightbit/GatherV2__port__0/quantize:2", "stochastic_dense/mu_quantized_const:0", "stochastic_dense/mu_quantized_min:0",  "stochastic_dense/mu_quantized_max:0" },
              { "stochastic_dense__channel__pruning/MatMul/eightbit:0", "stochastic_dense__channel__pruning/MatMul/eightbit:1",  "stochastic_dense__channel__pruning/MatMul/eightbit:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<float>({1}), "stochastic_dense__channel__pruning/MatMul/eightbit/requant_range:0", 1);
@@ -312,7 +312,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new Requantization_RangeOp(),
              { "stochastic_dense__channel__pruning/MatMul/eightbit:0", "stochastic_dense__channel__pruning/MatMul/eightbit:1", "stochastic_dense__channel__pruning/MatMul/eightbit:2" },
              { "stochastic_dense__channel__pruning/MatMul/eightbit/requant_range:0", "stochastic_dense__channel__pruning/MatMul/eightbit/requant_range:1" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     ctx.add(new RamTensor<uint8_t>(), "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:0", 1);
@@ -321,7 +321,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new RequantizeOp(),
              { "stochastic_dense__channel__pruning/MatMul/eightbit:0", "stochastic_dense__channel__pruning/MatMul/eightbit:1", "stochastic_dense__channel__pruning/MatMul/eightbit:2", "stochastic_dense__channel__pruning/MatMul/eightbit/requant_range:0", "stochastic_dense__channel__pruning/MatMul/eightbit/requant_range:1" },
              { "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:0", "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:1", "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<int>(), "mul_6/eightbit:0", 2);
@@ -330,7 +330,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new QuantizedMulOp<uint8_t, uint8_t, int>(), 
              { "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:0", "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:1", "stochastic_dense__channel__pruning/MatMul/eightbit/requantize:2", "mul_eightbit/mul/y__port__0/quantize:0", "mul_eightbit/mul/y__port__0/quantize:1",  "mul_eightbit/mul/y__port__0/quantize:2" },
              { "mul_6/eightbit:0", "mul_6/eightbit:1",  "mul_6/eightbit:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<float>({1}), "mul_6/eightbit/requant_range:0", 1);
@@ -338,7 +338,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new Requantization_RangeOp(),
              { "mul_6/eightbit:0", "mul_6/eightbit:1", "mul_6/eightbit:2" },
              { "mul_6/eightbit/requant_range:0", "mul_6/eightbit/requant_range:1" });
-    //ctx.eval();
+    ctx.eval();
 }
 {   
     ctx.add(new RamTensor<uint8_t>(), "mul_6/eightbit/requantize:0", 1);
@@ -347,7 +347,7 @@ void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {
     ctx.push(new RequantizeOp(),
              { "mul_6/eightbit:0", "mul_6/eightbit:1", "mul_6/eightbit:2", "mul_6/eightbit/requant_range:0", "mul_6/eightbit/requant_range:1" },
              { "mul_6/eightbit/requantize:0", "mul_6/eightbit/requantize:1", "mul_6/eightbit/requantize:2" });
-    //ctx.eval();
+    ctx.eval();
 }
 {
     ctx.add(new RamTensor<float>(), "mul_6:0");

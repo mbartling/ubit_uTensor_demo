@@ -10,7 +10,7 @@ This project was built in a Docker container. Make sure you have docker installe
 docker pull patrickthomashansen/yotta:initial
 docker run -ti -v PATH_TO_REPO:/home/ patrickthomashansen/yotta:initial bash
 cd /home
-yotta target bbc-microbit-classic-gcc
+yotta target bbc-microbit-classic-gcc-nosd
 yotta build
 ```
 

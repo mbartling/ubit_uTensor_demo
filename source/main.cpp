@@ -4,15 +4,13 @@
 #include "uTensor/core/context.hpp"
 #include "uTensor/core/tensor.hpp"  //useful tensor classes
 #include "mbed.h"
-#include "MicroBit.h"
 
-MicroBit uBit;
+DigitalOut col0(P0_4, 0);
+DigitalOut myled(P0_13);
 
 static Context ctx;  //creating the context class, the stage where inferences take place
 
 int main(void) {
-  uBit.init();
-
   //Context ctx;  //creating the context class, the stage where inferences take place 
   //wrapping the input data in a tensor class
   Tensor* input_x = new WrappedRamTensor<float>({1, 784}, (float*) input_data);
@@ -22,7 +20,12 @@ int main(void) {
   ctx.eval(); //trigger the inference
 
   int pred_label = *(pred_tensor->read<int>(0, 0));  //getting the result back
-  uBit.display.scroll(pred_label);
-
-  release_fiber();
+  
+  // blink when prediction is complete
+  while(1) {
+    myled = 1;
+    wait(0.2);
+    myled = 0;
+    wait(0.2);
+  }
 }

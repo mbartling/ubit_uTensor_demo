@@ -7,7 +7,7 @@
 #include "uTensor/core/tensor.hpp"
 #include "uTensor/ops/ArrayOps.hpp"
 #include "uTensor/ops/NnOps.hpp"
-#include "mnist_for_mc.hpp"
+#include "ubit-utensor-demo/mnist_for_mc.hpp"
 
 
 void get_mnist_for_mc_ctx(Context& ctx, Tensor* input_0) {

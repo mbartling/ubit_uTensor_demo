@@ -14,13 +14,14 @@ static Context ctx;  //creating the context class, the stage where inferences ta
 int main(void) {
   //Context ctx;  //creating the context class, the stage where inferences take place 
   //wrapping the input data in a tensor class
-  Tensor* input_x = new WrappedRamTensor<float>({1, 784}, (float*) input_data);
+  Tensor* input_x = new WrappedRamTensor<float>({1, 28, 28}, (float*) input_data);
 
   get_mnist_for_mc_ctx(ctx, input_x);  // pass the tensor to the context
   S_TENSOR pred_tensor = ctx.get(sref_mul_6_0);  // getting a reference to the output tensor
   ctx.eval(); //trigger the inference
 
   int pred_label = *(pred_tensor->read<int>(0, 0));  //getting the result back
+  printf("Predicted Label: %d\n", pred_label);
   
   // blink when prediction is complete
   while(1) {

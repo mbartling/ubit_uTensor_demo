@@ -11,7 +11,7 @@ docker pull patrickthomashansen/yotta:initial
 #docker run -ti -v PATH_TO_REPO:/home/ patrickthomashansen/yotta:initial bash
 docker run -ti -v `pwd`/build:/home/ patrickthomashansen/yotta:initial bash
 cd /home
-git clone https://github.com/mbartling/ubit_uTensor_demo.git && mv ubit_uYensor_demo/* .
+git clone https://github.com/mbartling/ubit_uTensor_demo.git && mv ubit_uTensor_demo/* .
 yotta target bbc-microbit-classic-gcc-nosd
 yotta build
 ```
